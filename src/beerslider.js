@@ -1,8 +1,9 @@
 export class BeerSlider {
 
-    constructor (element, {start = '50', prefix = 'beer'} = {}) {
+    constructor (element, {start = '50', prefix = 'beer', moveOnHover = false} = {}) {
         this.start = parseInt(start) ? Math.min(100, Math.max(0, parseInt(start))) : 50
         this.prefix = prefix
+        this.moveOnHover = moveOnHover
         if (!element || element.children.length !== 2) {
             return
         }
@@ -23,6 +24,7 @@ export class BeerSlider {
             min: '0',
             max: '100'
         })
+
         this.handle = this.addElement('span', {
             class: `${this.prefix}-handle`
         })
@@ -73,13 +75,23 @@ export class BeerSlider {
     }
     setImgWidth () {
         this.revealElement.style.width = getComputedStyle(this.element)['width']
+        this.width = this.element.clientWidth
     }
     addListeners () {
         const eventTypes = ['input', 'change']
         eventTypes.forEach( (i) => {
             this.range.addEventListener( i, () => {this.move()} )
         })
-        window.addEventListener('resize', () => {this.setImgWidth()})
+        if(this.moveOnHover) {
+            this.range.addEventListener('mousemove', (e) => {
+                const newVal = parseInt((e.offsetX / this.width)*100)
+                this.range.value = newVal
+                this.move()
+            })
+        }
+        window.addEventListener('resize', () => {
+            this.setImgWidth()
+        })
     }
     move () {
         this.revealContainer.style.width = `${this.range.value}%`
