@@ -23,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pehaa/beerslider.git"
+    "url": "https://github.com/permettez-moi-de-construire/pmdc-beerslider"
   },
   "keywords": [
     "vanilla",
@@ -36,9 +36,9 @@
   "author": "PeHaa Hetman <info@pehaa.com> (http://wptemplates.pehaa.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pehaa/beerslider/issues"
+    "url": "https://github.com/permettez-moi-de-construire/pmdc-beerslider"
   },
-  "homepage": "https://github.com/pehaa/beerslider#readme",
+  "homepage": "https://github.com/permettez-moi-de-construire/pmdc-beerslider#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
